@@ -14,8 +14,5 @@ class AppTestCase(unittest.TestCase):
 
     def test_root_is_index(self):
         response = self.app.get('/')
-        print(response)
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(200, response.status_code)
+        self.assertIn('BakaCommander', response.data.decode())
