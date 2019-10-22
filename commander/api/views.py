@@ -18,11 +18,13 @@ def index(subdir_path):
 
     if subdir_path:
         current_path = current_path / subdir_path
-        link_back = fsutils.get_link_back(subdir_path)
+        link_back = fsutils.get_link_back(str(current_path))
+
+    current_name = fsutils.get_name(str(current_path))
 
     if current_path.is_file():
         return response_success(
-            name=str(current_path),
+            name=current_name,
             link_back=link_back,
             content=current_path.read_text()
         )
@@ -36,7 +38,7 @@ def index(subdir_path):
         raise APINotFoundError(str(current_path))
     else:
         return response_success(
-            name=str(current_path),
+            name=current_name,
             link_back=link_back,
             content=dir_index
         )

@@ -18,6 +18,11 @@ def get_link_back(path):
     return ''
 
 
+def get_name(path):
+    url_parts = split_path(path)
+    return '/'.join(url_parts)
+
+
 def get_item_type(item):
     if item.suffix and item.is_file():
         return '{} File'.format(item.suffix.upper())
@@ -35,11 +40,14 @@ def get_current_dir_index(dir_path, subdir_path=''):
 
     for record in dir_list:
         item = Path(dir_path / record)
+        link = '{}'.format(item.name)
 
-        if os.path.islink(item):
+        if subdir_path:
+            link = '{}/{}'.format(str(subdir_path), record)
+
+        if item.is_symlink():
             continue
 
-        link = '{}/{}'.format(subdir_path, record) if subdir_path else item
         dir_index.append({
             'name': item.name,
             'link': link,
