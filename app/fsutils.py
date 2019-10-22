@@ -19,7 +19,7 @@ def get_link_back(path):
 
 
 def get_item_type(item):
-    if item.suffix and os.path.isfile(item):
+    if item.suffix and item.is_file():
         return '{} File'.format(item.suffix.upper())
     elif os.path.isdir(item):
         return 'Directory'

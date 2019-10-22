@@ -7,9 +7,9 @@ class APIBaseError(Exception):
         self.payload = payload
 
     def serialize(self):
-        rv = dict(self.payload or ())
-        rv['message'] = self.message
-        return rv
+        err = dict(self.payload or ())
+        err['message'] = self.message
+        return err
 
 
 class APINotFoundError(APIBaseError):
