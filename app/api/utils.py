@@ -1,9 +1,13 @@
-import os
+from flask import jsonify
 
 
-def get_item_type(item):
-    if item.suffix and os.path.isfile(item):
-        return '{} File'.format(item.suffix.upper())
-    elif os.path.isdir(item):
-        return 'Directory'
-    return 'Text Data'
+def response_success(name, link_back, content):
+    data = {
+        'name': name,
+        'link_back': link_back,
+        'content': content
+    }
+    response = jsonify(data)
+    response.status_code = 200
+    return response
+
