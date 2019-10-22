@@ -3,16 +3,13 @@ import os
 from flask import Flask, jsonify, render_template
 from pathlib import Path
 
-from app.api import views as api_views
-from app.api.exceptions import APINotFoundError
+from commander.api import views as api_views
+from commander.api.exceptions import APINotFoundError
 
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-        HOME_DIR=Path.home()
-    )
+    app.config.from_mapping(HOME_DIR=Path.home())
 
     app.register_blueprint(api_views.bp)
 
