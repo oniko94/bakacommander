@@ -16,7 +16,3 @@ class AppTestCase(unittest.TestCase):
         response = self.app.get('/')
         self.assertEqual(200, response.status_code)
         self.assertIn('BakaCommander', response.data.decode())
-
-
-if __name__ == '__main__':
-    unittest.main()

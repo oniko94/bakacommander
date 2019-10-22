@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from pyfakefs.fake_filesystem_unittest import TestCase
 from commander import app
 
@@ -9,7 +10,7 @@ class APITestCase(TestCase):
         self.fs.create_dir('/test')
         test_app = app.create_app({
             'TESTING': True,
-            'HOME_DIR': '/test'
+            'HOME_DIR': Path('/test')
         })
         self.app = test_app.test_client()
 
