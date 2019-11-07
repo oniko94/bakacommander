@@ -3,15 +3,13 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: {
         app: './src/main.js'
     },
-    devtool: 'inline-source-map',
     output: {
         filename: 'app.bundle.js',
         path: path.resolve(__dirname, 'commander/static'),
-        publicPath: '/static'
+        publicPath: '/'
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
@@ -43,9 +41,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['*.*']
-        }),
         new MiniCssExtractPlugin({
             filename: 'styles.css',
             chunkFilename: '[id].css'
