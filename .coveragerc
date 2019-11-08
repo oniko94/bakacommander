@@ -1,0 +1,13 @@
+[run]
+omit =
+    */__init__.py
+    env/*
+    instance/*
+    tests/*
+
+[report]
+omit =
+    */__init__.py
+    env/*
+    instance/*
+    tests/*
