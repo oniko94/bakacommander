@@ -4,22 +4,23 @@ import {
     fetchIndexError
 } from '@/actions';
 import { API_URL } from '@/constants';
-import path from 'path';
+import url from 'url';
 
-export function fetchIndex(url='') {
+function fetchIndex(nextPath='') {
     return dispatch => {
         dispatch(fetchIndexPending());
-        fetch(path.join(API_URL, url))
+        fetch(url.resolve(API_URL, nextPath))
             .then(res => res.json())
             .then(res => {
                 if (res.error) {
                     throw res.error;
                 }
                 dispatch(fetchIndexSuccess(res));
-                return res;
             })
             .catch(error => {
                 dispatch(fetchIndexError(error));
             });
     };
 }
+
+export default fetchIndex;

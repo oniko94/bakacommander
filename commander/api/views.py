@@ -1,4 +1,5 @@
 from flask import Blueprint, current_app
+from flask_cors import cross_origin
 from pathlib import Path
 
 from commander import fsutils
@@ -11,6 +12,7 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 
 @bp.route('/', defaults={'subdir_path': ''})
 @bp.route('/<path:subdir_path>')
+@cross_origin()
 def index(subdir_path):
     home_dir = current_app.config.get('HOME_DIR')
     current_path = Path(home_dir)
