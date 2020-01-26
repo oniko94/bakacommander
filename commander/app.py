@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, jsonify, render_template
+from flask_cors import CORS
 from pathlib import Path
 
 from commander.api import views as api_views
@@ -9,6 +10,7 @@ from commander.api.exceptions import APINotFoundError
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config.from_mapping(HOME_DIR=Path.home())
 
     app.register_blueprint(api_views.bp)
