@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPayload, getPayloadPending, getPayloadError } from "@/reducers";
-import ItemList from '@/components/ItemList';
+import ItemList from '@/containers/ItemList';
 import fetchIndexAction from '@/requests/fetchIndex';
 
 export class Main extends Component {
