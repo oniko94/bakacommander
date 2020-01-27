@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPayload, getPayloadPending, getPayloadError } from "@/reducers";
-import ItemList from '@/containers/ItemList';
+import {Item} from '@/components/Item';
+import {MenuBar} from '@/components/MenuBar';
 import fetchIndexAction from '@/requests/fetchIndex';
 
 export class Main extends Component {
     constructor(props) {
         super(props);
-        this.shouldComponentRender = this.shouldComponentRender.bind(this)
+        this.shouldComponentRender = this.shouldComponentRender.bind(this);
     }
 
     componentDidMount() {
@@ -17,7 +18,7 @@ export class Main extends Component {
     }
 
     shouldComponentRender() {
-        let dataFetched = Object.entries(this.props.payload).length > 0;
+        const dataFetched = Object.entries(this.props.payload).length > 0;
         return !this.props.pending && dataFetched;
     }
 
@@ -27,11 +28,22 @@ export class Main extends Component {
         if (!this.shouldComponentRender()) {
             return <h1>Loading data...</h1>;
         }
+
         if (error) {
             console.error(error);
             return <h1 style="color: red">{error}</h1>;
         }
-        return <ItemList index={payload.content}/>
+
+        const items = payload.content.map((item) => {
+            let i = payload.content.indexOf(item);
+            return <Item key={i.toString()} item={item} loadTime={i * 50} fetchData={this.props.fetchIndex}/>
+        });
+        return (
+            <div>
+                <MenuBar linkBack={this.props.payload.link_back} fetchData={this.props.fetchIndex}/>
+                <section className="item--container" id="tree">{items}</section>
+            </div>
+        );
     }
 }
 
