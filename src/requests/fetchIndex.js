@@ -9,7 +9,8 @@ import url from 'url';
 function fetchIndex(nextPath='') {
     return dispatch => {
         dispatch(fetchIndexPending());
-        fetch(url.resolve(API_URL, nextPath))
+        const reqURL = url.resolve(API_URL, nextPath);
+        fetch(reqURL)
             .then(res => res.json())
             .then(res => {
                 if (res.error) {

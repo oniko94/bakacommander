@@ -1,5 +1,13 @@
 .item {
   margin: 5px;
+  display: flex;
+  &:hover {
+    cursor: pointer;
+    background: rgba(7, 144, 222, 0.3);
+    border: 1px solid rgba(7, 144, 222, 0.5);
+    color: #0000EE;
+    text-decoration: underline;
+  }
   img {
     width: 20px;
     margin-right: 5px;

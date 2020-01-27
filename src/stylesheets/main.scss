@@ -1,9 +1,20 @@
 @import '_variables.scss';
 
 body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
   font-family: $FONT_FAMILY;
-
-  ul {
-    list-style: none;
+  background: $BODY_BG;
+  overflow: hidden;
+  .item--container {
+    height: 500px;
+    overflow-y: scroll;
+    margin: 5px;
+    background: #FFFFFF;
+    border: 1px solid #D4D0C7;
+    -webkit-box-shadow: 1px 2px 2px 0px rgba(179,153,164,1);
+    -moz-box-shadow: 1px 2px 2px 0px rgba(179,153,164,1);
+    box-shadow: 1px 2px 2px 0px rgba(179,153,164,1);
   }
 }
