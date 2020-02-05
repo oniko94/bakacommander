@@ -40,7 +40,7 @@ export class Main extends Component {
         });
         return (
             <div>
-                <MenuBar linkBack={this.props.payload.link_back} fetchData={this.props.fetchIndex}/>
+                <MenuBar payload={this.props.payload} fetchData={this.props.fetchIndex}/>
                 <section className="item--container" id="tree">{items}</section>
             </div>
         );

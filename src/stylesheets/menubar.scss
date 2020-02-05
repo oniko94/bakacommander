@@ -3,27 +3,40 @@
 .menubar {
   background: $WIN_BG;
   width: 100%;
-  padding: 5px 20px 5px 10px;
+  padding: 0;
   -webkit-box-shadow: 0 2px 2px 0 rgba(179,153,164,1);
   -moz-box-shadow: 0 2px 2px 0 rgba(179,153,164,1);
   box-shadow: 0 2px 2px 0 rgba(179,153,164,1);
 
-  img {
-    cursor: pointer;
-    border: 1px solid #b399a4;
-    -webkit-box-shadow: 2.5px 2.5px 1px 0 rgba(179,153,164,1);
-    -moz-box-shadow: 2.5px 2.5px 1px 0 rgba(179,153,164,1);
-    box-shadow: 2.5px 2.5px 1px 0 rgba(179,153,164,1);
+  &__inner {
+    width: 100%;
+    padding: 5px 20px 5px 10px;
+    &.upper {
+      border: 1px solid #b399a4;
+      img {
+        cursor: pointer;
+        width: 25px;
+        border: 1px solid #b399a4;
+        -webkit-box-shadow: 2px 2px 1px 0 rgba(179,153,164,1);
+        -moz-box-shadow: 2px 2px 1px 0 rgba(179,153,164,1);
+        box-shadow: 2px 2px 1px 0 rgba(179,153,164,1);
 
-    &:hover {
-      -webkit-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
-      -moz-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
-      box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+        &:hover {
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+          -moz-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+          box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+        }
+        &.disabled {
+          opacity: .5;
+          box-shadow: none;
+          cursor: default;
+        }
+      }
     }
-    &.disabled {
-      opacity: .5;
-      box-shadow: none;
-      cursor: default;
+    &.lower input {
+      width: 80%;
+      padding: 2px;
+      background: #fff;
     }
   }
 }
