@@ -28,7 +28,9 @@
         }
         &.disabled {
           opacity: .5;
-          box-shadow: none;
+          -webkit-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+          -moz-box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
+          box-shadow: 1px 1px 1px 0 rgba(179,153,164,1);
           cursor: default;
         }
       }

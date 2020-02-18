@@ -24,6 +24,7 @@ export class Main extends Component {
 
     render() {
         const {payload, error, pending} = this.props;
+        let content;
 
         if (!this.shouldComponentRender()) {
             return <h1>Loading data...</h1>;
@@ -34,14 +35,19 @@ export class Main extends Component {
             return <h1 style="color: red">{error}</h1>;
         }
 
-        const items = payload.content.map((item) => {
-            let i = payload.content.indexOf(item);
-            return <Item key={i.toString()} item={item} loadTime={i * 50} fetchData={this.props.fetchIndex}/>
-        });
+        if (Array.isArray(payload.content)) {
+            content = payload.content.map((item) => {
+                let i = payload.content.indexOf(item);
+                return <Item key={i.toString()} item={item} loadTime={i * 50} fetchData={this.props.fetchIndex}/>
+            });
+        } else {
+            content = <pre>{payload.content}</pre>;
+        }
+
         return (
             <div>
                 <MenuBar payload={this.props.payload} fetchData={this.props.fetchIndex}/>
-                <section className="item--container" id="tree">{items}</section>
+                <section className="item--container" id="tree">{content}</section>
             </div>
         );
     }
