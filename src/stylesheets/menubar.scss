@@ -37,8 +37,10 @@
     }
     &.lower input {
       width: 80%;
-      padding: 2px;
+      padding: 2px 0 2px 5px;
       background: #fff;
+      font-family: $FONT_FAMILY;
+      font-size: 15px;
     }
   }
 }

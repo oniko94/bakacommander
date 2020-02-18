@@ -30,14 +30,9 @@ export class MenuBar extends Component {
 
     render() {
         return (
-            <nav className="menubar">
-                <div className="menubar__inner upper">
-                   <img src="http://localhost:5000/static/img/icon-back.png" onClick={this.handleClickBack} className={this.disableButton()}/>
-                </div>
-                <div className="menubar__inner lower">
-                    <input type="text" value={this.props.payload.name} disabled/>
-                </div>
-            </nav>
+            <div className="menubar__inner upper">
+                <img src="http://localhost:5000/static/img/icon-back.png" onClick={this.handleClickBack} className={this.disableButton()}/>
+            </div>
         );
     }
 }
