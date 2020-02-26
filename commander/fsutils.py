@@ -10,11 +10,24 @@ def split_path(path):
         return path.split('/')
 
 
+def join_path(path_parts):
+    if platform.system() == 'Windows':
+        return '\\'.join(path_parts)
+    else:
+        return '/'.join(path_parts)
+
+
 def get_link_back(path):
+    HOME_DIR = str(Path.home())
     url_parts = split_path(path)
     if len(url_parts) > 1:
         url_parts.pop()
-        return '/'.join(url_parts)
+        joined_path = join_path(url_parts)
+        if joined_path == HOME_DIR:
+            return ''
+        else:
+            parent_dir = joined_path.lstrip(HOME_DIR)
+            return parent_dir
     return ''
 
 

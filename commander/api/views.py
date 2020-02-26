@@ -23,11 +23,13 @@ def index(subdir_path):
         link_back = fsutils.get_link_back(str(current_path))
 
     current_name = fsutils.get_name(str(current_path))
+    homepath = '/'.join(fsutils.split_path(str(home_dir)))
 
     if current_path.is_file():
         return response_success(
             name=current_name,
             link_back=link_back,
+            home_dir=homepath,
             content=current_path.read_text()
         )
 
@@ -42,5 +44,6 @@ def index(subdir_path):
         return response_success(
             name=current_name,
             link_back=link_back,
+            home_dir=homepath,
             content=dir_index
         )

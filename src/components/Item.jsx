@@ -9,27 +9,28 @@ export class Item extends Component {
     }
 
     componentDidMount() {
+        const { loadTime } = this.props;
         setTimeout(() => {
             this.setState({hidden: false});
-        }, this.props.loadTime);
+        }, loadTime);
     }
 
     handleClick(ev) {
-        const { fetchData } = this.props;
-        const link = ev.target.dataset.link;
+        const { fetchData, item } = this.props;
+        const link = item.link;
         fetchData(link);
     }
 
     render() {
-        const item = this.props.item;
+        const { item } = this.props;
         const itemType = item.type === 'Directory' ? 'folder' : 'file';
         if (this.state.hidden) {
             return '';
         }
         return (
-            <div className="item">
+            <div className="item" onClick={this.handleClick}>
                 <img src={`http://localhost:5000/static/img/icon-${itemType}.png`}/>
-                <span data-link={item.link} onClick={this.handleClick}>{ item.name }</span>
+                <span>{ item.name }</span>
             </div>
         );
     }
